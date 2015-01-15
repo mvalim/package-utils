@@ -1,0 +1,7 @@
+suites:
+    utils_suit:
+        namespace: Mvalim\Workbench
+        src_path: src
+        spec_path: tests
+        spec_prefix: spec
+        psr4_prefix: Mvalim\Workbench
