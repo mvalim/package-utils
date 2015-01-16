@@ -7,7 +7,7 @@ service provider, like publishing *configs* and *migrations*
 To use this helpers the first step is to add this package to the composer 
 dependencies.
 
-	composer require mvalim\workbench
+	composer require mvalim/workbench
 
 After the package was installed you only need to extend `Mvalim\Workbench\Provider`
 in your service provider instead of `Illuminate\Support\ServiceProvider` and the
