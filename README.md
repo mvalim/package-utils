@@ -60,7 +60,7 @@ php artisan package:publish mvalim/package --force
 
 If you don't provide a resource, all of the registered resources will be published.
 The `package:publish` command accept the option `--force` that will backup the
-existing resources to `storage/package` and will override them.
+existing resources to `storage/packages` and will override them.
 
 
 ## TODO
