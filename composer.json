@@ -1,6 +1,6 @@
 {
     "name": "mvalim/package-utils",
-    "description": "Add some common functionality to the Laravel 5 packages",
+    "description": "Some helpers for Laravel 5 package development",
     "authors": [
         {
             "name": "Matheus Valim",
