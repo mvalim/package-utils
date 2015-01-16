@@ -64,5 +64,6 @@ existing resources to `storage/workbench` and will override them.
 
 
 ## TODO
+- Write missing tests !!
 - Add other publishers
 - Allow people to register custom publishers / helpers
