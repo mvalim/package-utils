@@ -30,7 +30,7 @@ When you extend the `Provider` class the below methods will be available:
 Add configuration files to be published.
 
 **$path**: can be a single file or a directory with multiple files that will be 
-merged in a single `<vendor>/<package>/config.php` when published.
+merged in a single `config/<vendor>/<package>/config.php` when published.
 
 **Warging:** Like the default laravel config files, all these files must return
 an array.
