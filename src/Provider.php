@@ -49,7 +49,7 @@ abstract class Provider extends ServiceProvider {
 		return $this->package = $this->container()->addPackage($packageName, $namespace);
 	}
 
-	protected function configNeeded($path)
+	protected function needsConfig($path)
 	{
 		$publisher = $this->package->configPublisher();
 		$publisher->filesToPublish($path);
@@ -59,7 +59,7 @@ abstract class Provider extends ServiceProvider {
 		return $this;
 	}
 
-	protected function migrationNeeded($path)
+	protected function needsMigration($path)
 	{
 		$publisher = $this->package->migrationPublisher();
 		$publisher->filesToPublish($path, null);

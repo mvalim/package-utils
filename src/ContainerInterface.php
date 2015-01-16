@@ -29,4 +29,11 @@ interface ContainerInterface {
 	 * @return array
 	 */
 	public function getPackages();
+
+	/**
+	 * Add the command instance to the container
+	 *
+	 * @param $command
+	 */
+	public function setCommand($command);
 }

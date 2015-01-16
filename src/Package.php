@@ -40,17 +40,8 @@ class Package {
 		$this->name = $name;
 		$this->namespace = $namespace;
 
-		$this->startPublishers();
 	}
 
-
-	/**
-	 * Start the default publisher
-	 */
-	protected function startPublishers() {
-		$this->publishers['config'] = $this->configPublisher();
-		$this->publishers['migration'] = $this->migrationPublisher();
-	}
 
 	/**
 	 * @return Publishers\Config
@@ -106,6 +97,6 @@ class Package {
 	}
 
 	public function getPublishers() {
-		return $this->publishers();
+		return $this->publishers;
 	}
 }

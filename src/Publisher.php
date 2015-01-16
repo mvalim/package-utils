@@ -121,24 +121,33 @@ abstract class Publisher {
 		return $this->files;
 	}
 
-	protected function copyFilesToDestination()
+	protected function copyFilesToDestination($force = false)
 	{
+		$filesPublished = 0;
 		$files = $this->files();
 		foreach($files as $f)
 		{
+			$filename = basename($f);
 			$destination = $this->destination($f);
 
 			if(is_file($destination))
 			{
+				if(!$force) {
+					$this->container->command()->line("<fg=yellow>Skipping</fg=yellow> <info>{$filename}</info>: file already exists in destination");
+					continue;
+				}
+
 				$this->backup($destination);
 			}
 			$this->filesystem->copy($f, $destination);
+			$filesPublished++;
 		}
+		return $filesPublished;
 	}
 
 	protected function destination($file)
 	{
-		return $this->getPath() . trim($file, '/\\');
+		return $this->getPath() . '/' . basename($file);
 	}
 
 	protected function backup($file)
@@ -156,6 +165,11 @@ abstract class Publisher {
 		global $argv;
 		if($this->app->runningInConsole() && in_array('workbench:publish', $argv))
 		{
+			$command = $this->container->command();
+			if($command)
+			{
+				$command->error($e->getMessage());
+			}
 			return;
 		}
 		throw $e;

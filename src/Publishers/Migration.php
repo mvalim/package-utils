@@ -18,6 +18,9 @@ class Migration extends Publisher {
 
 	public function publish($force = false)
 	{
-		$this->copyFilesToDestination();
+		if($this->copyFilesToDestination($force))
+		{
+			$this->container->command()->line('<info>Package migrations published to:</info> '.$this->getPath());
+		}
 	}
 }

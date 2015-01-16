@@ -51,13 +51,15 @@ class Config extends Publisher {
 		{
 			if( ! $force)
 			{
-				throw new FileExistsException('The config file was already published');
+				$this->container->command()->line('<fg=yellow>Skipping</fg=yellow> <info>configuration</info>: file already exists in destination.');
+				return;
 			}
 			$this->backup($configFile);
 		}
 
 		$this->makeDirectory();
 		$this->filesystem->put($configFile, $this->buildFileContents($config));
+		$this->container->command()->line('<info>Package configs published to:</info> '.$configFile);
 	}
 
 	public function getOptions()

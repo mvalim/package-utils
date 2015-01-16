@@ -47,23 +47,25 @@ class Publish extends Command {
 	{
 		$packageName = $this->argument('package');
 
-		$this->container = app()->make('Mvalim\Workbench\Container');
+		$this->container = $this->getLaravel()->make('Mvalim\Workbench\Container');
+		$this->container->setCommand($this);
 		$package = $this->container->package($packageName);
 
 		$resource = $this->argument('resource');
 		$allPublishers = $resource ? [$package->getPublisher($resource)] : $package->getPublishers();
 
 		foreach($allPublishers as $key => $publisher) {
-			$this->comment('Publishing ' . ($resource ?: $key) . ' for package ' . $packageName);
+			$this->line('');
+			$this->line('<fg=cyan>Publishing ' . str_plural($resource ?: $key) . ' for package ' . $packageName . '</fg=cyan>');
 			try {
 				$publisher->publish($this->option('force'));
 			} catch(\Exception $e) {
 				$this->error("\n" . $e->getMessage());
 				return;
 			}
-
 		}
-		$this->info("Resource(s) from $packageName published");
+		$this->line('');
+		$this->line("<info>Done:</info> Resource(s) from <fg=cyan>{$packageName}</fg=cyan> published");
 	}
 
 	/**

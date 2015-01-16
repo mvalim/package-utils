@@ -13,11 +13,17 @@ class Container implements ContainerInterface {
 	 */
 	protected $app;
 
+	/**
+	 * @var Publish
+	 */
+	protected $command;
+
 	public function __construct(Application $app)
 	{
 		$this->app = $app;
 
-		$this->app->bindShared('workbench.publish', function() {
+		$this->app->bindShared('workbench.publish', function ()
+		{
 			return new Publish();
 		});
 
@@ -26,7 +32,7 @@ class Container implements ContainerInterface {
 		];
 
 		$events = $this->app['events'];
-		$events->listen('artisan.start', function($artisan) use ($commands)
+		$events->listen('artisan.start', function ($artisan) use ($commands)
 		{
 			$artisan->resolveCommands($commands);
 		});
@@ -67,6 +73,26 @@ class Container implements ContainerInterface {
 	public function getPackages()
 	{
 		return $this->packages;
+	}
+
+	/**
+	 * Add the command instance to the container
+	 *
+	 * @param $command
+	 */
+	public function setCommand($command)
+	{
+		$this->command = $command;
+	}
+
+	/**
+	 * Get the command instance
+	 *
+	 * @return Publish
+	 */
+	public function command()
+	{
+		return $this->command;
 	}
 
 }
