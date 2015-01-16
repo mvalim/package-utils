@@ -71,6 +71,7 @@ class Config extends Publisher {
 		}
 		foreach($files as $f)
 		{
+			$f = (string)$f;
 			$opts[$f] = include($f);
 			if( ! is_array($opts[$f]))
 			{
