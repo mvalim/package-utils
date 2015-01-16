@@ -1,6 +1,6 @@
 {
-    "name": "mvalim/workbench",
-    "description": "Add some default functionality to the Laravel 5 packages",
+    "name": "mvalim/package-utils",
+    "description": "Add some common functionality to the Laravel 5 packages",
     "authors": [
         {
             "name": "Matheus Valim",

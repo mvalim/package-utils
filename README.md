@@ -1,4 +1,4 @@
-# Laravel 5 Workbench Helper
+# Laravel 5 Package Utils
 Since laravel 5 doesn't ship with some of the workbench/package functionalities
 I've decided to write this package and add some common capabilities to the default
 service provider, like publishing *configs* and *migrations*
