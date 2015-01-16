@@ -1,4 +1,4 @@
-<?php  namespace Mvalim\Workbench; 
+<?php  namespace Mvalim\Workbench;
 
 use Mvalim\Workbench\Exceptions\PublisherNotRegisteredException;
 
@@ -46,24 +46,30 @@ class Package {
 	/**
 	 * @return Publishers\Config
 	 */
-	public function configPublisher() {
-		if(!isset($this->publishers['config'])) {
+	public function configPublisher()
+	{
+		if( ! isset($this->publishers['config']))
+		{
 			$this->publishers['config'] = app()->make('Mvalim\Workbench\Publishers\Config', [
 				'package' => $this
 			]);
 		}
+
 		return $this->publishers['config'];
 	}
 
 	/**
 	 * @return Publishers\Migration
 	 */
-	public function migrationPublisher() {
-		if(!isset($this->publishers['migration'])) {
+	public function migrationPublisher()
+	{
+		if( ! isset($this->publishers['migration']))
+		{
 			$this->publishers['migration'] = app()->make('Mvalim\Workbench\Publishers\Migration', [
 				'package' => $this
 			]);
 		}
+
 		return $this->publishers['migration'];
 	}
 
@@ -80,7 +86,7 @@ class Package {
 	 */
 	public function getNamespace()
 	{
-		return $this->namespace ?: basename($this->getName());
+		return $this->namespace ?: str_replace('/', '.', $this->getName());
 	}
 
 	/**
@@ -88,15 +94,18 @@ class Package {
 	 * @return Publisher
 	 * @throws PublisherNotRegisteredException
 	 */
-	public function getPublisher($publisher) {
-		if( ! isset($this->publishers[$publisher]))
+	public function getPublisher($publisher)
+	{
+		if( ! isset($this->publishers[ $publisher ]))
 		{
 			throw new PublisherNotRegisteredException("No publisher for $publisher was registered from package {$this->getName()}");
 		}
-		return $this->publishers[$publisher];
+
+		return $this->publishers[ $publisher ];
 	}
 
-	public function getPublishers() {
+	public function getPublishers()
+	{
 		return $this->publishers;
 	}
 }
