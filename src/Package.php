@@ -1,6 +1,6 @@
-<?php  namespace Mvalim\Workbench;
+<?php  namespace Mvalim\PackageUtils;
 
-use Mvalim\Workbench\Exceptions\PublisherNotRegisteredException;
+use Mvalim\PackageUtils\Exceptions\PublisherNotRegisteredException;
 
 class Package {
 
@@ -50,7 +50,7 @@ class Package {
 	{
 		if( ! isset($this->publishers['config']))
 		{
-			$this->publishers['config'] = app()->make('Mvalim\Workbench\Publishers\Config', [
+			$this->publishers['config'] = app()->make('Mvalim\PackageUtils\Publishers\Config', [
 				'package' => $this
 			]);
 		}
@@ -65,7 +65,7 @@ class Package {
 	{
 		if( ! isset($this->publishers['migration']))
 		{
-			$this->publishers['migration'] = app()->make('Mvalim\Workbench\Publishers\Migration', [
+			$this->publishers['migration'] = app()->make('Mvalim\PackageUtils\Publishers\Migration', [
 				'package' => $this
 			]);
 		}

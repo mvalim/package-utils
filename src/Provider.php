@@ -1,7 +1,7 @@
-<?php  namespace Mvalim\Workbench;
+<?php  namespace Mvalim\PackageUtils;
 
 use Illuminate\Support\ServiceProvider;
-use Mvalim\Workbench\Exceptions\IncorrectPackageNameException;
+use Mvalim\PackageUtils\Exceptions\IncorrectPackageNameException;
 
 abstract class Provider extends ServiceProvider {
 
@@ -14,9 +14,9 @@ abstract class Provider extends ServiceProvider {
 	{
 		parent::__construct($app);
 
-		if( ! $this->app->resolved('Mvalim\Workbench\Container'))
+		if( ! $this->app->resolved('Mvalim\PackageUtils\Container'))
 		{
-			$this->app->singleton('Mvalim\Workbench\Container', function () use ($app)
+			$this->app->singleton('Mvalim\PackageUtils\Container', function () use ($app)
 			{
 				return new Container($app);
 			});
@@ -26,11 +26,11 @@ abstract class Provider extends ServiceProvider {
 	/**
 	 * Get container instance
 	 *
-	 * @return \Mvalim\Workbench\Container
+	 * @return \Mvalim\PackageUtils\Container
 	 */
 	protected function container()
 	{
-		return $this->app->make('Mvalim\Workbench\Container');
+		return $this->app->make('Mvalim\PackageUtils\Container');
 	}
 
 	protected function package($packageName = null, $namespace = null)

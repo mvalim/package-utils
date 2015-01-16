@@ -1,25 +1,25 @@
 <?php
 
-namespace spec\Mvalim\Workbench;
+namespace spec\Mvalim\PackageUtils;
 
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Contracts\Foundation\Application;
-use Mvalim\Workbench\Publisher;
+use Mvalim\PackageUtils\Publisher;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 
 class ConfigPublisherSpec extends ObjectBehavior
 {
     function let(Application $app, $container, Filesystem $files) {
-        $this->beAnInstanceOf('spec\Mvalim\Workbench\ConfigPublisher');
-        $container->implement('Mvalim\Workbench\ContainerInterface');
+        $this->beAnInstanceOf('spec\Mvalim\PackageUtils\ConfigPublisher');
+        $container->implement('Mvalim\PackageUtils\ContainerInterface');
         $app->make('files')->willReturn($files);
-        $app->make('Mvalim\Workbench\Container')->willReturn($container);
+        $app->make('Mvalim\PackageUtils\Container')->willReturn($container);
         $this->beConstructedWith('mvalim/package', $app);
     }
     function it_is_initializable(Application $app)
     {
-        $this->shouldHaveType('spec\Mvalim\Workbench\ConfigPublisher');
+        $this->shouldHaveType('spec\Mvalim\PackageUtils\ConfigPublisher');
     }
 
     function it_should_return_the_correct_path() {

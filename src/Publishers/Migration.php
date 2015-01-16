@@ -1,6 +1,6 @@
-<?php  namespace Mvalim\Workbench\Publishers;
+<?php  namespace Mvalim\PackageUtils\Publishers;
 
-use Mvalim\Workbench\Publisher;
+use Mvalim\PackageUtils\Publisher;
 
 class Migration extends Publisher {
 

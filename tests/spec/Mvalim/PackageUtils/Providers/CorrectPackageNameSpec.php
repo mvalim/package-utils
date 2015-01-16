@@ -1,11 +1,11 @@
 <?php
 
-namespace spec\Mvalim\Workbench\Providers;
+namespace spec\Mvalim\PackageUtils\Providers;
 
-use Mvalim\Workbench\ContainerInterface;
+use Mvalim\PackageUtils\ContainerInterface;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
-use Mvalim\Workbench\Provider;
+use Mvalim\PackageUtils\Provider;
 use Illuminate\Contracts\Foundation\Application;
 
 class CorrectPackageNameSpec extends ObjectBehavior {
@@ -13,9 +13,9 @@ class CorrectPackageNameSpec extends ObjectBehavior {
 	function let(Application $app, ContainerInterface $container)
 	{
 		$container->addPackage('mvalim/package')->shouldBeCalled();
-		$app->make('Mvalim\Workbench\Container')->willReturn($container);
+		$app->make('Mvalim\PackageUtils\Container')->willReturn($container);
 
-		$this->beAnInstanceOf('spec\Mvalim\Workbench\Providers\CorrectProviderStub');
+		$this->beAnInstanceOf('spec\Mvalim\PackageUtils\Providers\CorrectProviderStub');
 		$this->beConstructedWith($app);
 	}
 }

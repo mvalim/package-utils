@@ -1,7 +1,7 @@
-<?php namespace Mvalim\Workbench\Console;
+<?php namespace Mvalim\PackageUtils\Console;
 
 use Illuminate\Console\Command;
-use Mvalim\Workbench\Container;
+use Mvalim\PackageUtils\Container;
 use SebastianBergmann\Exporter\Exception;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Input\InputArgument;
@@ -13,7 +13,7 @@ class Publish extends Command {
 	 *
 	 * @var string
 	 */
-	protected $name = 'workbench:publish';
+	protected $name = 'package:publish';
 
 	/**
 	 * The console command description.
@@ -47,7 +47,7 @@ class Publish extends Command {
 	{
 		$packageName = $this->argument('package');
 
-		$this->container = $this->getLaravel()->make('Mvalim\Workbench\Container');
+		$this->container = $this->getLaravel()->make('Mvalim\PackageUtils\Container');
 		$this->container->setCommand($this);
 		$package = $this->container->package($packageName);
 

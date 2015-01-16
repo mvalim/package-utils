@@ -1,6 +1,6 @@
 <?php
 
-namespace spec\Mvalim\Workbench;
+namespace spec\Mvalim\PackageUtils;
 
 use Illuminate\Contracts\Foundation\Application;
 use PhpSpec\ObjectBehavior;
@@ -11,6 +11,6 @@ class ContainerSpec extends ObjectBehavior
     function it_is_initializable(Application $app)
     {
         $this->beConstructedWith($app);
-        $this->shouldHaveType('Mvalim\Workbench\Container');
+        $this->shouldHaveType('Mvalim\PackageUtils\Container');
     }
 }

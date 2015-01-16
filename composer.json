@@ -16,7 +16,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Mvalim\\Workbench\\": "src"
+            "Mvalim\\PackageUtils\\": "src"
         }
     },
     "license": "MIT",

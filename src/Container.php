@@ -1,8 +1,8 @@
-<?php namespace Mvalim\Workbench;
+<?php namespace Mvalim\PackageUtils;
 
 use Illuminate\Contracts\Foundation\Application;
-use Mvalim\Workbench\Console\Publish;
-use Mvalim\Workbench\Exceptions\PackageNotDefinedException;
+use Mvalim\PackageUtils\Console\Publish;
+use Mvalim\PackageUtils\Exceptions\PackageNotDefinedException;
 
 class Container implements ContainerInterface {
 
@@ -22,13 +22,13 @@ class Container implements ContainerInterface {
 	{
 		$this->app = $app;
 
-		$this->app->bindShared('workbench.publish', function ()
+		$this->app->bindShared('package.publish', function ()
 		{
 			return new Publish();
 		});
 
 		$commands = [
-			'workbench.publish'
+			'package.publish'
 		];
 
 		$events = $this->app['events'];

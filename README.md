@@ -7,9 +7,9 @@ service provider, like publishing *configs* and *migrations*
 To use this helpers the first step is to add this package to the composer 
 dependencies.
 
-	composer require mvalim/workbench
+	composer require mvalim/package-utils
 
-After the package was installed you only need to extend `Mvalim\Workbench\Provider`
+After the package was installed you only need to extend `Mvalim\PackageUtils\Provider`
 in your service provider instead of `Illuminate\Support\ServiceProvider` and the
 helpers will be available.
 
@@ -19,7 +19,7 @@ that need a namespace). When regitering your package just call:
 ```
 $this->package('<vendor>/<packageName>', '<namespace>');
 
-ex.: $this->package('mvalim/workbench', 'workbench');
+ex.: $this->package('mvalim/package', 'my-package');
 ```
 **Warning:** *If no namespace is provided, the `vendor.packageName` will be used as the namespace*
 
@@ -47,20 +47,20 @@ published to the migrations path.
 After you've defined your package resources you can publish them using the folowing 
 command:
 ```	
-php artisan workbench:publish <packageName> <optional:resources>
+php artisan package:publish <packageName> <optional:resources>
 
-php artisan workbench:publish mvalim/workbench
+php artisan package:publish mvalim/package
 
 // publish only the configs
-php artisan workbench:publish mvalim/workbench config 
+php artisan package:publish mvalim/package config
 
 // backup the existing, and overwrite the resources
-php artisan workbench:publish mvalim/workbench --force
+php artisan package:publish mvalim/package --force
 ```
 
 If you don't provide a resource, all of the registered resources will be published.
-The `workbench:publish` command accept the option `--force` that will backup the
-existing resources to `storage/workbench` and will override them.
+The `package:publish` command accept the option `--force` that will backup the
+existing resources to `storage/package` and will override them.
 
 
 ## TODO

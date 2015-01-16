@@ -1,7 +1,7 @@
 suites:
     utils_suit:
-        namespace: Mvalim\Workbench
+        namespace: Mvalim\PackageUtils
         src_path: src
         spec_path: tests
         spec_prefix: spec
-        psr4_prefix: Mvalim\Workbench
+        psr4_prefix: Mvalim\PackageUtils

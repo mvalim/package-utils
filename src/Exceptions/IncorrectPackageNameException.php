@@ -1,4 +1,4 @@
-<?php namespace Mvalim\Workbench\Exceptions;
+<?php namespace Mvalim\PackageUtils\Exceptions;
 class IncorrectPackageNameException extends \Exception {
 	
 }

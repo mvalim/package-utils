@@ -1,9 +1,9 @@
-<?php  namespace Mvalim\Workbench\Publishers;
+<?php  namespace Mvalim\PackageUtils\Publishers;
 
-use Mvalim\Workbench\Exceptions\FileExistsException;
-use Mvalim\Workbench\Exceptions\InvalidConfigFileException;
-use Mvalim\Workbench\Exceptions\PackageConfigMissing;
-use Mvalim\Workbench\Publisher;
+use Mvalim\PackageUtils\Exceptions\FileExistsException;
+use Mvalim\PackageUtils\Exceptions\InvalidConfigFileException;
+use Mvalim\PackageUtils\Exceptions\PackageConfigMissing;
+use Mvalim\PackageUtils\Publisher;
 
 class Config extends Publisher {
 

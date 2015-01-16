@@ -1,4 +1,4 @@
-<?php namespace Mvalim\Workbench;
+<?php namespace Mvalim\PackageUtils;
 
 use Illuminate\Contracts\Foundation\Application;
 

@@ -1,4 +1,4 @@
-<?php namespace Mvalim\Workbench;
+<?php namespace Mvalim\PackageUtils;
 
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Filesystem\Filesystem;
@@ -40,7 +40,7 @@ abstract class Publisher {
 
 		$this->filesystem = $this->app->make('files');
 
-		$this->container = $this->app->make('Mvalim\Workbench\Container');
+		$this->container = $this->app->make('Mvalim\PackageUtils\Container');
 	}
 
 	/**
@@ -152,18 +152,18 @@ abstract class Publisher {
 
 	protected function backup($file)
 	{
-		$backupPath = $this->app->make('path.storage') . '/workbench/backup';
+		$backupPath = $this->app->make('path.storage') . '/packages/backup/' . $this->package->getName();
 		if( ! $this->filesystem->isDirectory($backupPath))
 		{
-			$this->filesystem->makeDirectory($backupPath);
+			$this->filesystem->makeDirectory($backupPath,0755,true);
 		}
-		$newFile = $backupPath . '/' . date('Ymd-h-i') . '_' . basename($file);
+		$newFile = $backupPath . '/' . date('Ymdhis') . '_' . basename($file);
 		$this->filesystem->move($file, $newFile);
 	}
 
 	protected function error(\Exception $e) {
 		global $argv;
-		if($this->app->runningInConsole() && in_array('workbench:publish', $argv))
+		if($this->app->runningInConsole() && in_array('package:publish', $argv))
 		{
 			$command = $this->container->command();
 			if($command)
