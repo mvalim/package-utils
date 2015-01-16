@@ -10,8 +10,11 @@ use Prophecy\Argument;
 
 class ConfigPublisherSpec extends ObjectBehavior
 {
-    function let(Application $app) {
+    function let(Application $app, $container, Filesystem $files) {
         $this->beAnInstanceOf('spec\Mvalim\Workbench\ConfigPublisher');
+        $container->implement('Mvalim\Workbench\ContainerInterface');
+        $app->make('files')->willReturn($files);
+        $app->make('Mvalim\Workbench\Container')->willReturn($container);
         $this->beConstructedWith('mvalim/package', $app);
     }
     function it_is_initializable(Application $app)
