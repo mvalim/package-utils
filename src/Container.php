@@ -44,6 +44,8 @@ class Container implements ContainerInterface {
 	}
 
 	/**
+	 * Return a given package instance
+	 *
 	 * @param $name
 	 * @return Package
 	 * @throws PackageNotDefinedException
@@ -58,6 +60,8 @@ class Container implements ContainerInterface {
 	}
 
 	/**
+	 * Return an array containing all packages instances
+	 *
 	 * @return array
 	 */
 	public function getPackages()

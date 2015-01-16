@@ -13,4 +13,20 @@ interface ContainerInterface {
 	 * @return mixed
 	 */
 	public function addPackage($name, $namespace = null);
+
+	/**
+	 * Return a given package instance
+	 *
+	 * @param $name
+	 * @return Package
+	 * @throws PackageNotDefinedException
+	 */
+	public function package($name);
+
+	/**
+	 * Return an array containing all packages instances
+	 *
+	 * @return array
+	 */
+	public function getPackages();
 }

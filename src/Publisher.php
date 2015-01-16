@@ -23,6 +23,11 @@ abstract class Publisher {
 	protected $app;
 
 	/**
+	 * @var Container
+	 */
+	protected $container;
+
+	/**
 	 * @var  array
 	 */
 	protected $files;
@@ -35,15 +40,7 @@ abstract class Publisher {
 
 		$this->filesystem = $this->app->make('files');
 
-		$container = $this->app->make('Mvalim\Workbench\Container');
-		if( ! $container)
-		{
-			$this->app->singleton('Workbench\Container', function ()
-			{
-				return new Container($this->app);
-			});
-		}
-
+		$this->container = $this->app->make('Mvalim\Workbench\Container');
 	}
 
 	/**
