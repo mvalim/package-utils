@@ -1,5 +1,5 @@
 # Laravel 5 Workbench Helper
-Since laravel 5 doesn't ship with some of the old workbench / package functionality
+Since laravel 5 doesn't ship with some of the workbench/package functionalities
 I've decided to write this package and add some common capabilities to the default
 service provider, like publishing *configs* and *migrations*
 
@@ -56,8 +56,8 @@ php artisan workbench:publish mvalim/workbench config
 
 // backup the existing, and overwrite the resources
 php artisan workbench:publish mvalim/workbench --force
-
 ```
+
 If you don't provide a resource, all of the registered resources will be published.
 The `workbench:publish` command accept the option `--force` that will backup the
 existing resources to `storage/workbench` and will override them.
