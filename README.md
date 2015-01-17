@@ -63,6 +63,38 @@ The `package:publish` command accept the option `--force` that will backup the
 existing resources to `storage/packages` and will override them.
 
 
+## Service provider example
+```
+<?php  namespace Acme;
+
+use Mvalim\PackageUtils\Provider;
+
+class AcmeServiceProvider extends Provider {
+
+	/**
+	 * Register the service provider.
+	 *
+	 * @return void
+	 */
+	public function register()
+	{
+		$this->package('acme/awesome-package');
+		$this->needsConfig(__DIR__ . '/resources/configs');
+		$this->needsMigration(__DIR__ . '/resources/migrations');
+	}
+}
+
+// in the console
+php package:publish acme/awesome-package
+
+
+// Done, all the configs and migrations are now published! You can access the
+// configurations, and all your migrations are now available
+
+Config::get('acme.awesome-package.my-option');
+Artisan::call('migrate');
+```
+
 ## TODO
 - Write missing tests !!
 - Add other publishers
