@@ -3,6 +3,11 @@ Since laravel 5 doesn't ship with some of the workbench/package functionalities
 I've decided to write this package and add some common capabilities to the default
 service provider, like publishing *configs* and *migrations*
 
+This package intends to follow the new directions defined by Taylor Otwell, but
+if you need the old functionaties back you can try:
+
+**Configuration:** https://github.com/orchestral/config
+
 ## Usage
 To use this helpers the first step is to add this package to the composer 
 dependencies.
@@ -12,6 +17,11 @@ dependencies.
 After the package was installed you only need to extend `Mvalim\PackageUtils\Provider`
 in your service provider instead of `Illuminate\Support\ServiceProvider` and the
 helpers will be available.
+
+Once you have installed this package you can register as many packages as you
+want without worrying about performance. The publishers will only register your
+resources at runtime, no additional checks (like if files exist) will be made.
+If the resources are not published yet and exception will be thrown.
 
 First you must define your package name and namespace (for config, and other resources
 that need a namespace). When regitering your package just call:
