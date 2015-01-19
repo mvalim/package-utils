@@ -21,7 +21,7 @@ helpers will be available.
 Once you have installed this package you can register as many packages as you
 want without worrying about performance. The publishers will only register your
 resources at runtime, no additional checks (like if files exist) will be made.
-If the resources are not published yet and exception will be thrown.
+If the resources are not published yet an exception can be thrown.
 
 First you must define your package name and namespace (for config, and other resources
 that need a namespace). When regitering your package just call:
