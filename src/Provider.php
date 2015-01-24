@@ -33,7 +33,7 @@ abstract class Provider extends ServiceProvider {
 		return $this->app->make('Mvalim\PackageUtils\Container');
 	}
 
-	protected function package($packageName = null, $namespace = null)
+	public function package($packageName = null, $namespace = null)
 	{
 		if( ! $packageName)
 		{
