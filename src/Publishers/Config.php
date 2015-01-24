@@ -27,11 +27,20 @@ class Config extends Publisher {
 	public function register()
 	{
 		$namespace = $this->package->getNamespace();
+		$config = $this->app->make('config');
 
 		try
 		{
-			return $this->app->make('config')->set([
-				$namespace => include($this->getPath() . '/config.php')
+			$path = $this->getPath() . '/config.php';
+			if($this->app->environment() === 'testing') {
+				if( ! $this->filesystem->exists($path)) {
+					return $config->set([
+						$namespace => $this->getOptions()
+					]);
+				}
+			}
+			return $config->set([
+				$namespace => include($path)
 			]);
 		} catch(\Exception $e) {
 			$msg = "You need to publish the configs for the package {$this->package->getName()}";
